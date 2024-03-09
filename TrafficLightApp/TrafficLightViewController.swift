@@ -43,7 +43,9 @@ class TrafficLightViewController: UIViewController {
     }
 
     @IBAction func switchButtonPressed(_ sender: UIButton) {
-        sender.currentTitle == "START" ? sender.setTitle("NEXT", for: .normal) : sender.setTitle("START", for: .normal)
+        if sender.currentTitle == "START" {
+            sender.setTitle("NEXT", for: .normal)
+        }
         
         switch currentLight {
         case .redLight:
