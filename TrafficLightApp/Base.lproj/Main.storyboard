@@ -8,16 +8,16 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Traffic Light View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="TrafficLightApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="TrafficLightViewController" customModule="TrafficLightApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="23" translatesAutoresizingMaskIntoConstraints="NO" id="Ev0-SE-qhb" userLabel="Lights Stack View">
-                                <rect key="frame" x="121.66666666666669" y="79" width="150" height="496"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Ev0-SE-qhb" userLabel="Lights Stack View">
+                                <rect key="frame" x="121.66666666666669" y="79" width="150" height="490"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UFQ-wT-41q">
                                         <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
@@ -27,12 +27,12 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gUi-EO-gHy">
-                                        <rect key="frame" x="0.0" y="173" width="150" height="150"/>
+                                        <rect key="frame" x="0.0" y="170" width="150" height="150"/>
                                         <color key="backgroundColor" systemColor="systemYellowColor"/>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DeF-DW-xf6">
-                                        <rect key="frame" x="0.0" y="346" width="150" height="150"/>
-                                        <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                        <rect key="frame" x="0.0" y="340" width="150" height="150"/>
+                                        <color key="backgroundColor" red="0.23444773690000001" green="0.45460100129999997" blue="0.24090365829999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     </view>
                                 </subviews>
                                 <constraints>
@@ -41,16 +41,16 @@
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qZz-vA-OSY">
-                                <rect key="frame" x="121.66666666666669" y="696" width="150" height="42"/>
+                                <rect key="frame" x="121.66666666666669" y="726" width="150" height="42"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="aXG-ql-pyA"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="START"/>
+                                <state key="normal" title="BUTTON"/>
                                 <connections>
-                                    <action selector="startButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PIB-Lp-1xn"/>
+                                    <action selector="switchButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PIB-Lp-1xn"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -58,7 +58,7 @@
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Ev0-SE-qhb" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ARc-nc-g0r"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="qZz-vA-OSY" secondAttribute="bottom" constant="80" id="N1t-RZ-sYe"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="qZz-vA-OSY" secondAttribute="bottom" constant="50" id="N1t-RZ-sYe"/>
                             <constraint firstItem="Ev0-SE-qhb" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="NiN-dt-a3S"/>
                             <constraint firstItem="qZz-vA-OSY" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="P93-b9-80X"/>
                             <constraint firstItem="Ev0-SE-qhb" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.381679" id="sgw-OJ-jvG"/>
@@ -67,6 +67,7 @@
                     <connections>
                         <outlet property="greenView" destination="DeF-DW-xf6" id="NPZ-C0-pN0"/>
                         <outlet property="redView" destination="UFQ-wT-41q" id="FpT-NV-JTP"/>
+                        <outlet property="switchButton" destination="qZz-vA-OSY" id="9eS-qY-9Sw"/>
                         <outlet property="yellowView" destination="gUi-EO-gHy" id="g4v-K2-Pae"/>
                     </connections>
                 </viewController>
@@ -76,9 +77,6 @@
         </scene>
     </scenes>
     <resources>
-        <systemColor name="systemGreenColor">
-            <color red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
