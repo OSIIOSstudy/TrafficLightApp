@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class TrafficLightViewController: UIViewController {
     @IBOutlet var redView: UIView!
     @IBOutlet var yellowView: UIView!
     @IBOutlet var greenView: UIView!
